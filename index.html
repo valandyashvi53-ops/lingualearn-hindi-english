@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LinguaLearn – Learn Hindi &amp; English</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <a class="brand" href="#" data-go="home"><span class="logo" aria-hidden="true">L</span><span>LinguaLearn</span></a>
+  <nav class="topnav" aria-label="Main navigation">
+    <button type="button" data-go="home">Learn</button>
+    <button type="button" data-go="practice">Practice</button>
+    <button type="button" data-go="leaderboard">Leaderboard</button>
+    <button type="button" data-go="profile">Profile</button>
+  </nav>
+  <div class="tools">
+    <span class="chip">🇮🇳 Hindi ⇄ English</span>
+    <button type="button" id="soundBtn" class="icon" aria-pressed="true" aria-label="Toggle sound">🔊</button>
+    <button type="button" class="icon" data-go="profile" aria-label="Open profile"><span id="avatar">?</span></button>
+  </div>
+</header>
+
+<div class="shell">
+  <aside class="side">
+    <nav aria-label="Sidebar">
+      <button type="button" data-go="home"><span aria-hidden="true">🏠</span><span>Home</span></button>
+      <button type="button" data-go="path"><span aria-hidden="true">🗺️</span><span>Path</span></button>
+      <button type="button" data-go="practice"><span aria-hidden="true">🎯</span><span>Practice</span></button>
+      <button type="button" data-go="achievements"><span aria-hidden="true">🏅</span><span>Badges</span></button>
+      <button type="button" data-go="leaderboard"><span aria-hidden="true">🏆</span><span>Ranks</span></button>
+      <button type="button" data-go="settings"><span aria-hidden="true">⚙️</span><span>Settings</span></button>
+    </nav>
+  </aside>
+
+  <main id="main">
+    <section id="v-home" class="view">
+      <h1 id="welcome">Namaste! 👋</h1>
+      <p class="mut">Learn Hindi and English with short, fun lessons.</p>
+      <div id="stats" class="stats"></div>
+      <div class="card">
+        <h2>Daily goal</h2>
+        <p id="goalTxt" class="mut"></p>
+        <div class="prog"><span id="goalBar"></span></div>
+      </div>
+      <section id="pathSec" class="card">
+        <h2>Your learning path</h2>
+        <div id="path" class="path"></div>
+      </section>
+    </section>
+
+    <section id="v-practice" class="view" hidden>
+      <h1>Practice</h1>
+      <div class="card">
+        <p>Review a random mix of 8 questions from the lessons you have unlocked. Practice earns XP too.</p>
+        <button type="button" id="startPractice" class="btn">Start practice</button>
+      </div>
+    </section>
+
+    <section id="v-achievements" class="view" hidden>
+      <h1>Achievements</h1>
+      <div id="badges" class="badges"></div>
+    </section>
+
+    <section id="v-leaderboard" class="view" hidden>
+      <h1>Leaderboard</h1>
+      <p class="note">⚠️ Sample demonstration data only. These users are not real and the board is not connected to any server.</p>
+      <ol id="board" class="board"></ol>
+    </section>
+
+    <section id="v-profile" class="view" hidden>
+      <h1>Profile</h1>
+      <form id="nameForm" class="card field">
+        <label for="nameInput">Display name</label>
+        <input type="text" id="nameInput" maxlength="20" placeholder="Enter your name" autocomplete="off">
+        <button type="submit" class="btn">Save</button>
+      </form>
+      <div id="pStats" class="stats"></div>
+      <h2>Your badges</h2>
+      <div id="pBadges" class="badges"></div>
+    </section>
+
+    <section id="v-settings" class="view" hidden>
+      <h1>Settings</h1>
+      <div class="card">
+        <label><input type="checkbox" id="soundSet"> Sound effects</label>
+      </div>
+      <div class="card">
+        <h2>Reset progress</h2>
+        <p class="mut">This deletes your XP, streak, lessons and name from this browser.</p>
+        <button type="button" id="resetBtn" class="btn danger">Reset progress</button>
+      </div>
+    </section>
+
+    <section id="v-lesson" class="view lesson" hidden>
+      <div class="lhead">
+        <button type="button" id="quit" class="icon" aria-label="Quit lesson">✕</button>
+        <div class="prog" role="progressbar" aria-label="Lesson progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="bar"></span></div>
+      </div>
+      <h1 id="lt" class="lt">Lesson</h1>
+      <div class="qcard">
+        <p id="qn" class="mut"></p>
+        <h2 id="prompt"></h2>
+        <div id="qbox" class="qbox"></div>
+        <div id="qa">
+          <div id="ans" class="ans" aria-label="Your answer"></div>
+          <div id="bank" class="bank" aria-label="Word bank"></div>
+          <div id="opts" class="opts" role="group" aria-label="Answer options"></div>
+          <div id="match" class="match"></div>
+        </div>
+        <button type="button" id="hint" class="link">💡 Show hint</button>
+        <p id="hintTxt" class="mut"></p>
+      </div>
+      <div id="fb" class="fb" role="status" aria-live="polite"></div>
+      <div class="actions"><button type="button" id="act" class="btn" disabled>Check</button></div>
+    </section>
+
+    <section id="v-done" class="view center" hidden>
+      <div class="card pop">
+        <h1>Lesson complete! 🎉</h1>
+        <p id="doneMsg"></p>
+        <div id="doneStats" class="stats"></div>
+        <button type="button" class="btn" data-go="home">Back to dashboard</button>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
